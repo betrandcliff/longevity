@@ -59,7 +59,7 @@ class _MessageState extends State<Message> {
                alignment: Alignment.topLeft, 
                 child: Padding(
                 padding: const EdgeInsets.only(left:18.0,top: 10),
-                  child: Text("Can I message you?",style: TextStyle(fontSize: 32,color: ColorPalette.text_black_Color,fontWeight: FontWeight.w400)),
+                  child: Text("Can I message you?",style: TextStyle(fontSize: 32,color: ColorPalette.textBlackColor,fontWeight: FontWeight.w400)),
                 )),
 
               Align(
@@ -174,24 +174,6 @@ Widget socialMedia(String name){
       );
 
 
-  // dropdownCountry_Flag({
-  //   return Container(
-  //       margin: EdgeInsets.only(right: 20),
-  //     child: CountryPickerDropdown(
-  //             initialValue: 'AR',
-  //             itemBuilder: _buildDropdownItems,
-  //             // itemFilter:  ['AR', 'DE', 'GB', 'CN'].contains(Country.isoCode),
-  //             priorityList:[
-  //                     CountryPickerUtils.getCountryByIsoCode('GB'),
-  //                     CountryPickerUtils.getCountryByIsoCode('CN'),
-  //                   ],
-  //             // sortComparator: (Country a, Country b) => a.isoCode.compareTo(b.isoCode),
-  //             onValuePicked: (Country country) {
-             
-  //             },
-  //           ),
-  //   );
-  // }
 
 
  Widget _buildDropdownItemsFlags(Country country) => Container(

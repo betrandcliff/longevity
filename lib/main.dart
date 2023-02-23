@@ -70,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
             left: Get.width/4,
             right: Get.width/4,
        
-              child: Center(child: Text("Disease Tracker",style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400))),
+              child: Center(child: Text("Disease Tracker",style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400,color: ColorPalette.textColor))),
             )
           ],
         ))

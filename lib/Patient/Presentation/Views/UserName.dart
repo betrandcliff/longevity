@@ -4,18 +4,19 @@ import 'package:country_pickers/country_pickers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:longevity/Patient/Presentation/Views/ChangeEmail.dart';
+import 'package:longevity/Patient/Presentation/Views/VerifyEmail.dart';
 // import 'package:google_fonts/google_fonts.dart';
 import 'package:longevity/common/Colors.dart';
 
 
-class Contact extends StatefulWidget {
-  const Contact({super.key});
+class ChangeUserName extends StatefulWidget {
+  const ChangeUserName({super.key});
 
   @override
-  State<Contact> createState() => _ContactState();
+  State<ChangeUserName> createState() => _ChangerUserNameState();
 }
 
-class _ContactState extends State<Contact> {
+class _ChangerUserNameState extends State<ChangeUserName> {
   final TextEditingController _telephoneController = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -23,6 +24,7 @@ class _ContactState extends State<Contact> {
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         body: Center(
+          
         child: Container(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -35,7 +37,7 @@ class _ContactState extends State<Contact> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(onPressed: (){Get.back();}, icon: Icon(Icons.arrow_back_ios_outlined)),
-                dropdownFunction(),
+                
                 ],
               ),
             ),
@@ -44,10 +46,10 @@ class _ContactState extends State<Contact> {
               alignment: Alignment.topLeft,
               child: Padding(
               padding: const EdgeInsets.only(left:18.0,bottom: 10,top: 10),
-                child: Image.asset("assets/images/hand.png"),
+                child: Image.asset("assets/images/person.png", height: 38.28, width: 35.47,),
               )),
 
-            Align(
+           const Align(
               alignment: Alignment.topLeft,
               child: Padding(
                 padding: const EdgeInsets.only(left:18.0,top: 10),
@@ -55,19 +57,23 @@ class _ContactState extends State<Contact> {
               )),
 
 
-              Align(
+             const Align(
                alignment: Alignment.topLeft, 
                 child: Padding(
                 padding: const EdgeInsets.only(left:18.0,top: 10),
-                  child: Text("Lets get in contact",style: TextStyle(fontSize: 32,color: ColorPalette.textBlackColor,fontWeight: FontWeight.w400)),
+                  child: Text("What name do you",style: TextStyle(fontSize: 32,color: ColorPalette.textBlackColor,fontWeight: FontWeight.w400)),
                 )),
 
               Align(
                 alignment: Alignment.topLeft,
                 child: Padding(
-                  padding: const EdgeInsets.only(left:18.0,top: 10),
-                  child: Text("""Login or create your account using your email
-or phone number""",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w400)),
+                  padding: const EdgeInsets.only(left:18.0),
+                  child: Row(
+                    children: [
+                     const Text("prefer to be",style: TextStyle(fontSize: 32,fontWeight: FontWeight.w400)),
+                    TextButton(onPressed: (){}, child: const Text("called?",style: TextStyle(fontSize: 32,fontWeight: FontWeight.w400)))
+                    ],
+                  ),
                 ),
               ),
 
@@ -82,7 +88,7 @@ or phone number""",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w400)),
                         child: TextField(
                           // controller: _telephoneController,
                           decoration:const InputDecoration(
-                            hintText: "Email or phone",
+                            hintText: "Jane Cooper",
                             hintStyle: TextStyle(color: ColorPalette.inputHintColor,fontSize: 32),
                             border: InputBorder.none
                           ),
@@ -98,24 +104,17 @@ or phone number""",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w400)),
                  padding: const EdgeInsets.only(left:18.0,top: 20,right: 18),
                 child: Row(
                   children:[
-                    const Text("Try",style: TextStyle(fontSize: 18,fontWeight: FontWeight.w500)),
-                    TextButton(onPressed: (){}, child: Text("Demo Mode",style: TextStyle(fontSize: 18,fontWeight: FontWeight.w500),))
+                    const Text("Add",style: TextStyle(fontSize: 18,fontWeight: FontWeight.w500)),
+                    TextButton(onPressed: (){}, child: Text("Profile Picture",style: TextStyle(fontSize: 18,fontWeight: FontWeight.w500),))
                   ],
                 ),
               ),
 
               Container(
                 // height: 48,
-                margin: EdgeInsets.only(top: Get.height/5),
+                margin: EdgeInsets.only(top: Get.height/7),
                 padding: const EdgeInsets.only(left:18.0,right: 18),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    socialMedia("facebook"),
-                    socialMedia("google"),
-                    socialMedia("mac"),
-                  ],
-                ),
+                child: TextButton(onPressed: (){},child: Text("Ask me later"),),
               ),
 
               Container(
@@ -125,7 +124,7 @@ or phone number""",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w400)),
                   borderRadius: BorderRadius.circular(20),
                   color: ColorPalette.buttonColor,
                 ),
-                child: MaterialButton(onPressed: ()=>Get.to(()=>const ChangeEmail()),child: const Text("Continue",
+                child: MaterialButton(onPressed: ()=>Get.to(()=>const VerifyEmail()),child: const Text("Continue",
                 style: TextStyle(fontSize: 20,fontWeight: FontWeight.w500,color: Colors.white),),),
 
               )
@@ -136,42 +135,6 @@ or phone number""",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w400)),
     );
   }
 
-
-Widget socialMedia(String name){
-  return InkWell(
-    child:Image.asset("assets/images/${name}.png") ,
-  );
-}
-
-  dropdownFunction(){
-    return Container(
-      margin: EdgeInsets.only(right: 20),
-      child: CountryPickerDropdown(
-              initialValue: 'AR',
-              itemBuilder: _buildDropdownItem,
-              priorityList:[
-                      CountryPickerUtils.getCountryByIsoCode('GB'),
-                      CountryPickerUtils.getCountryByIsoCode('CN'),
-                    ],
-              onValuePicked: (Country country) {
-                
-              },
-            ),
-    );
-  }
-
-
- Widget _buildDropdownItem(Country country) => Container(
-        child: Row(
-          children: <Widget>[
-            // CountryPickerUtils.getDefaultFlagImage(country),
-           
-            Text("${country.iso3Code}"), 
-          ],
-        ),
-      );
-
- 
 
    
 }

@@ -6,6 +6,8 @@ import 'package:get/get.dart';
 // import 'package:google_fonts/google_fonts.dart';
 import 'package:longevity/common/Colors.dart';
 
+import 'UserName.dart';
+
 
 class ChangeEmail extends StatefulWidget {
   const ChangeEmail({super.key});
@@ -16,7 +18,8 @@ class ChangeEmail extends StatefulWidget {
 
 class _ChangeEmailState extends State<ChangeEmail> {
   final TextEditingController _passwordController = TextEditingController();
-  late String Security_Status;
+String Security_Status ="";
+int linecolor=-1;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -59,7 +62,7 @@ class _ChangeEmailState extends State<ChangeEmail> {
                alignment: Alignment.topLeft, 
                 child: Padding(
                 padding: const EdgeInsets.only(left:18.0,top: 10),
-                  child: Text("Now your password",style: TextStyle(fontSize: 32,color: ColorPalette.text_black_Color,fontWeight: FontWeight.w400)),
+                  child: Text("Now your password",style: TextStyle(fontSize: 32,color: ColorPalette.textBlackColor,fontWeight: FontWeight.w400)),
                 )),
 
               Align(
@@ -87,10 +90,7 @@ class _ChangeEmailState extends State<ChangeEmail> {
 
                       // isDense: true
                     ),
-                    onChanged: (value) => setState(() {
-                      
-                    }),
-                    
+                    onChanged: security
                     
                   ),
                 ),
@@ -99,10 +99,10 @@ class _ChangeEmailState extends State<ChangeEmail> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                    horizontalLines(color: Security_Status=='Veryweak'? ColorPalette.StrongPasswordColor:ColorPalette.textColor),
-                    horizontalLines(color:  Security_Status=='weak'? ColorPalette.StrongPasswordColor:ColorPalette.textColor),
-                    horizontalLines(color: Security_Status=='Strong'? ColorPalette.StrongPasswordColor:ColorPalette.textColor),
-                    horizontalLines(color: Security_Status=='VeryStrong'? ColorPalette.StrongPasswordColor:ColorPalette.textColor),
+                    horizontalLines(color: (linecolor==0||linecolor>0)? ColorPalette.strongPasswordColor:ColorPalette.textColor),
+                    horizontalLines(color: (linecolor==1||linecolor>1)? ColorPalette.strongPasswordColor:ColorPalette.textColor),
+                    horizontalLines(color: (linecolor==2||linecolor>2)? ColorPalette.strongPasswordColor:ColorPalette.textColor),
+                    horizontalLines(color: linecolor==3? ColorPalette.strongPasswordColor:ColorPalette.textColor),
                 ],
               ),
 
@@ -111,14 +111,14 @@ class _ChangeEmailState extends State<ChangeEmail> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+
                     Row(
                       children:[
                         const Text("Check",style: TextStyle(fontSize: 18,fontWeight: FontWeight.w500)),
-                        TextButton(onPressed: (){}, child: Text("Password Tips",style: TextStyle(fontSize: 18,fontWeight: FontWeight.w500),))
-                      ],
-                    ),
+                        TextButton(onPressed: (){}, child:const Text("Password Tips",style: TextStyle(fontSize: 18,fontWeight: FontWeight.w500),))
+                      ]),
 
-                    Text(Security_Status,style: TextStyle(color: ColorPalette.StrongPasswordColor),)
+                    Text(Security_Status,style:const TextStyle(color: ColorPalette.strongPasswordColor),)
                   ],
                 ),
               ),
@@ -132,7 +132,7 @@ class _ChangeEmailState extends State<ChangeEmail> {
                   borderRadius: BorderRadius.circular(20),
                   color: ColorPalette.buttonColor,
                 ),
-                child: MaterialButton(onPressed: (){},child: const Text("Done",
+                child: MaterialButton(onPressed: (){Get.to(()=>ChangeUserName());},child: const Text("Done",
                 style: TextStyle(fontSize: 20,fontWeight: FontWeight.w500,color: Colors.white),),),
 
               )
@@ -149,27 +149,29 @@ Widget horizontalLines({ required Color color}){
 }
  
  security( String inputText){
-  if(inputText.length<=6)
-    changeSecurityStatus(Security.Weak as String);
+  if(inputText.length>=5 && inputText.length<=8)
+    changeSecurityStatus("Weak",1);
   
-  else if(inputText.length>8)
-    changeSecurityStatus(Security.Strong as String);
+  else if(inputText.length>9)
+    changeSecurityStatus("Strong",2);
   
 
-  else if(inputText.contains("@,.'#"))
-    changeSecurityStatus( Security.VeryStrong as String);
+  else if(RegExp(r'^[0-9_\-=@,\.;]+$').hasMatch(inputText))
+    changeSecurityStatus("VeryStrong",3);
   
   else
-    changeSecurityStatus(Security.VeryWeak as String);
+     changeSecurityStatus("VeryWeak",0);
 
   
   
   
 }
 
-changeSecurityStatus(String value){
+changeSecurityStatus(String value,  int line){
      setState(() {
         Security_Status= value;
+        linecolor=line;
+        print(value);
       });
 }
 }
@@ -177,4 +179,3 @@ changeSecurityStatus(String value){
 
 
 
-enum  Security   {VeryStrong,Strong , Weak, VeryWeak}
