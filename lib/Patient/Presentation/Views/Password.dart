@@ -59,13 +59,13 @@ class _PasswordState extends State<Password> {
                    Container(
                     padding: const EdgeInsets.only(left:18.0,right: 18.0),
                 margin: EdgeInsets.only(top: Get.height/20),
-                child: Expanded(child: TextField(
+                child: TextField(
                   controller:_controller ,
                   decoration: InputDecoration(
                     hintText: "**************",
                     hintStyle: TextStyle(fontSize: 16),
                     suffixIcon: IconButton(icon: Icon(Icons.visibility_outlined),onPressed: (){},)
-                  ),)),
+                  ),),
               ),
           
             textButton(text: "Forget Password", alignment: Alignment.centerRight,fontSize: 14,paddingright: 13,paddingtop: 20),
@@ -75,9 +75,9 @@ class _PasswordState extends State<Password> {
               
               Container(
                 width: double.infinity,
-                margin:  EdgeInsets.only(left: 20,right: 20,top: Get.height/3.5),
+                margin:  EdgeInsets.only(left: 20,right: 20,top: Get.height/3.1),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(25),
                   color: ColorPalette.buttonColor,
                 ),
                 child: MaterialButton(

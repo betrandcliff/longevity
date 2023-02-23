@@ -120,7 +120,7 @@ or phone number""",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w400)),
 
               Container(
                 width: double.infinity,
-                margin: const EdgeInsets.only(left: 20,right: 20,top: 20),
+                margin: const EdgeInsets.only(left: 20,right: 20,top: 25),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: ColorPalette.buttonColor,

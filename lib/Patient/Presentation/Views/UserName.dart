@@ -119,9 +119,9 @@ class _ChangerUserNameState extends State<ChangeUserName> {
 
               Container(
                 width: double.infinity,
-                margin: const EdgeInsets.only(left: 20,right: 20,top: 20),
+                margin: const EdgeInsets.only(left: 20,right: 20,top: 37),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(25),
                   color: ColorPalette.buttonColor,
                 ),
                 child: MaterialButton(onPressed: ()=>Get.to(()=>const VerifyEmail()),child: const Text("Continue",

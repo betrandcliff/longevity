@@ -77,32 +77,30 @@ int linecolor=-1;
               Container(
                 margin: EdgeInsets.only(top: Get.height/14),
                 padding: const EdgeInsets.only(left:18.0,top: 30,right: 18),
-                child: Expanded(
-                  child: TextField(
-                    controller: _passwordController,
-                    decoration: InputDecoration(
-                      hintText: "**************",
-                      hintStyle:const TextStyle(color: ColorPalette.inputHintColor,fontSize: 32),
-                      border: InputBorder.none,
-                      suffixIcon: IconButton(onPressed: (){}, icon: Icon(Icons.remove_red_eye_outlined)),
-                      suffixIconColor: ColorPalette.textColor,
-                      suffixIconConstraints:BoxConstraints(maxWidth: 53),
+                child: TextField(
+                  controller: _passwordController,
+                  decoration: InputDecoration(
+                    hintText: "**************",
+                    hintStyle:const TextStyle(color: ColorPalette.inputHintColor,fontSize: 32),
+                    border: InputBorder.none,
+                    suffixIcon: IconButton(onPressed: (){}, icon: Icon(Icons.remove_red_eye_outlined)),
+                    suffixIconColor: ColorPalette.textColor,
+                    suffixIconConstraints:BoxConstraints(maxWidth: 53),
 
-                      // isDense: true
-                    ),
-                    onChanged: security
-                    
+                    // isDense: true
                   ),
+                  onChanged: security
+                  
                 ),
               ),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                    horizontalLines(color: (linecolor==0||linecolor>0)? ColorPalette.strongPasswordColor:ColorPalette.textColor),
-                    horizontalLines(color: (linecolor==1||linecolor>1)? ColorPalette.strongPasswordColor:ColorPalette.textColor),
-                    horizontalLines(color: (linecolor==2||linecolor>2)? ColorPalette.strongPasswordColor:ColorPalette.textColor),
-                    horizontalLines(color: linecolor==3? ColorPalette.strongPasswordColor:ColorPalette.textColor),
+                    horizontalLines(color: (linecolor==0||linecolor>0)? ColorPalette.strongPasswordColor:ColorPalette.horizontalLineColor),
+                    horizontalLines(color: (linecolor==1||linecolor>1)? ColorPalette.strongPasswordColor:ColorPalette.horizontalLineColor),
+                    horizontalLines(color: (linecolor==2||linecolor>2)? ColorPalette.strongPasswordColor:ColorPalette.horizontalLineColor),
+                    horizontalLines(color: linecolor==3? ColorPalette.strongPasswordColor:ColorPalette.horizontalLineColor),
                 ],
               ),
 
@@ -127,9 +125,9 @@ int linecolor=-1;
 
               Container(
                 width: double.infinity,
-                margin:  EdgeInsets.only(left: 20,right: 20,top:Get.height/4.5),
+                margin:  EdgeInsets.only(left: 20,right: 20,top:Get.height/4.3),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(25),
                   color: ColorPalette.buttonColor,
                 ),
                 child: MaterialButton(onPressed: (){Get.to(()=>ChangeUserName());},child: const Text("Done",
@@ -156,7 +154,7 @@ Widget horizontalLines({ required Color color}){
     changeSecurityStatus("Strong",2);
   
 
-  else if(RegExp(r'^[0-9_\-=@,\.;]+$').hasMatch(inputText))
+  else if(RegExp(r'(?=.*\d)(?=.*\#)').hasMatch(inputText))
     changeSecurityStatus("VeryStrong",3);
   
   else

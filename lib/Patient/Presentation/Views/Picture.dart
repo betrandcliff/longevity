@@ -4,7 +4,9 @@ import 'package:country_pickers/country_pickers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:longevity/Patient/Presentation/Views/ChangeEmail.dart';
+import 'package:longevity/Patient/Presentation/Views/Earning.dart';
 import 'package:longevity/Patient/Presentation/Views/VerifyEmail.dart';
+import 'package:dashed_circle/dashed_circle.dart';
 // import 'package:google_fonts/google_fonts.dart';
 import 'package:longevity/common/Colors.dart';
 
@@ -20,6 +22,7 @@ class _PictureState extends State<Picture> {
   
     final TextEditingController _controller = TextEditingController();
 
+double _value= 0;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -42,62 +45,94 @@ class _PictureState extends State<Picture> {
              Row(
               children: [
                 textWidget(text: "Let's take a"),
-             textButton(text: "picture"),
+                textWidget(text: "picture",color: ColorPalette.buttonColor,leftpadding: 9),
               ],
              ),
              textWidget(text: "together?"),
-            Row(
-              children: [
-                Row(
-                  children: [
-                  Image.asset("assets/images/input-icon.png"),
-                  textButton(text: "Open Camera",fontSize: 16)
-                  ],
-                ),
-                Row(
-                  children: [
-                  Icon(Icons.upload_outlined),
-                  textButton(text: "Open gallery",fontSize: 16)
-                  ],
-                ),
-              ],
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal:18.0),
+              child: Row(
+               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                    Image.asset("assets/images/input-icon.png"),
+                    textButton(text: "Open Camera",fontSize: 16)
+                    ],
+                  ),
+                  Row(
+                    children: [
+                    Image.asset("assets/images/upload_.png"),
+                    textButton(text: "Open gallery",fontSize: 16)
+                    ],
+                  ),
+                ],
+              ),
             ),
 
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    textButton(text: "Link to my avatar",color: ColorPalette.horizontalLineColor,fontSize: 16),
+                   const Icon(Icons.call_made,color: ColorPalette.horizontalLineColor,)
+                  ],
+                ),
                    Container(
-                    padding: const EdgeInsets.only(left:18.0,right: 18.0),
-                margin: EdgeInsets.only(top: Get.height/20),
-                child: Expanded(child: TextField(
-                  controller:_controller ,
-                  decoration: InputDecoration(
-                    hintText: "**************",
-                    hintStyle: TextStyle(fontSize: 16),
-                    suffixIcon: IconButton(icon: Icon(Icons.visibility_outlined),onPressed: (){},)
-                  ),)),
+                    color: ColorPalette.greyButtonColor,
+                    
+                     child: DashedCircle(
+                       child: Padding(
+                         padding: EdgeInsets.all(8.0),
+                         child: CircleAvatar(
+                           radius: 70,
+                           backgroundColor: Colors.transparent,
+                          
+                           ),
+
+                       ),
+                       color: ColorPalette.horizontalLineColor,
+                     ),
+                   ),
+              
+
+              Align(
+                alignment: Alignment.center,
+                child: Padding(
+                  padding: const EdgeInsets.only(top:18.0),
+                  child: SizedBox(
+                    width: Get.width-(Get.width/4),
+                    child: Slider(
+                      max: 100,
+                      min:0,
+                      value: _value,
+                      onChanged: (value){
+                          setState(() {
+                            _value= value;
+                          });
+                      },
+                    ),
+                  ),
+                ),
               ),
-          
-            textButton(text: "Forget Password", alignment: Alignment.centerRight,fontSize: 14,paddingright: 13,paddingtop: 20),
 
 
              
               
               Container(
                 width: double.infinity,
-                margin:  EdgeInsets.only(left: 20,right: 20,top: Get.height/3.5),
+                margin:  EdgeInsets.only(left: 20,right: 20,top: Get.height/5.4),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: ColorPalette.buttonColor,
+                  borderRadius: BorderRadius.circular(25),
+                  color: Colors.transparent,
+                  border:Border.all(
+                    color:ColorPalette.buttonColor 
+                  )
                 ),
                 child: MaterialButton(
                   onPressed: (){
-                 
-                
-                  
-                  print("THE DONE BUTTON WAS TAPPED ");
-                  print("THE DONE BUTTON WAS TAPPED ");
-                  print("THE DONE BUTTON WAS TAPPED ");
-
+                    Get.to(()=>Earn());
                 },child: const Text("Done",
-                style: TextStyle(fontSize: 20,fontWeight: FontWeight.w500,color: Colors.white),),),
+                style: TextStyle(fontSize: 20,fontWeight: FontWeight.w500,color: ColorPalette.buttonColor),),),
 
               )
               
@@ -107,39 +142,33 @@ class _PictureState extends State<Picture> {
     );
   }
 
-Widget textButton({ required String text,Alignment alignment=Alignment.topLeft,double fontSize=36,TextDecoration decoration=TextDecoration.none,double paddingright=0,double paddingtop=0}){
+Widget textButton({ 
+    required String text,
+     Alignment alignment=Alignment.topLeft,
+     double fontSize=36,
+     TextDecoration decoration=TextDecoration.none,
+     double paddingright=0
+     ,double paddingtop=0,
+     Color color=ColorPalette.textColor
+     }){
    return  Align(
                 alignment: alignment,
                 child: Padding(
                   padding:  EdgeInsets.only(left:13.0,right: paddingright,top: paddingtop),
-                  child: TextButton(onPressed: (){}, child:  Text(text,style:TextStyle(fontSize: fontSize,fontWeight: FontWeight.w400,decoration:decoration))),
+                  child: TextButton(onPressed: (){}, child:  Text(text,style:TextStyle(fontSize: fontSize,fontWeight: FontWeight.w400,decoration:decoration,color: color))),
                 ),
               );
 }
    
 
-  Widget textWidget({required String text,  FontStyle fontStyle=FontStyle.normal, double fontSize=36}){
+  Widget textWidget({required String text, double leftpadding=18, FontStyle fontStyle=FontStyle.normal, double fontSize=36, Color color=ColorPalette.textBlackColor}){
     return Align(
               alignment: Alignment.topLeft,
               child: Padding(
-                padding:const EdgeInsets.only(left:18.0,top: 10),
-                child: Text(text,style:  TextStyle(color: ColorPalette.textBlackColor, fontSize: fontSize,fontStyle: fontStyle),),
+                padding: EdgeInsets.only(left:leftpadding,top: 10),
+                child: Text(text,style:  TextStyle(color:color , fontSize: fontSize,fontStyle: fontStyle),),
               ));
   } 
 
-  Widget bulletwidget({required String text}){
-    return Row(
-      children: [
-        Container(
-          width: 10,
-          height: 10,
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: ColorPalette.textBlackColor,),
-         
-        ),
-       const SizedBox(width: 8,),
-        Text(text,style:const TextStyle(color: ColorPalette.textBlackColor, fontSize: 16,fontWeight: FontWeight.w400),),
-      ],
-    );
-  }
 
 }

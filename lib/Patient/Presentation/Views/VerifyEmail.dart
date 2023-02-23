@@ -2,8 +2,9 @@
 import 'package:country_pickers/country.dart';
 import 'package:country_pickers/country_pickers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:longevity/Patient/Presentation/Views/BloodBank.dart';
+import 'package:longevity/Patient/Presentation/Views/BioBank.dart';
 import 'package:longevity/Patient/Presentation/Views/ChangeEmail.dart';
 // import 'package:google_fonts/google_fonts.dart';
 import 'package:longevity/common/Colors.dart';
@@ -125,7 +126,7 @@ or use the code from your Authenticator App.""",style: TextStyle(fontSize: 16,fo
 
               Container(
        
-                margin: EdgeInsets.only(top: Get.height/17),
+                margin: EdgeInsets.only(top: Get.height/19),
                 padding: const EdgeInsets.only(left:18.0,right: 18),
                 child: TextButton(onPressed: (){},child: const Text("Send it again",style: TextStyle(fontSize: 24,fontWeight: FontWeight.w500)),),
               ),
@@ -133,12 +134,12 @@ or use the code from your Authenticator App.""",style: TextStyle(fontSize: 16,fo
              const Text("Be quick, code expires in 6 hours!",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w400)),
               Container(
                 width: double.infinity,
-                margin:  EdgeInsets.only(left: 20,right: 20,top: Get.height/12),
+                margin:  EdgeInsets.only(left: 20,right: 20,top: Get.height/16),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(25),
                   color: ColorPalette.buttonColor,
                 ),
-                child: MaterialButton(onPressed: ()=>Get.to(()=>const BloodBank()),child: const Text("Continue",
+                child: MaterialButton(onPressed: ()=>Get.to(()=>const BioBank()),child: const Text("Continue",
                 style: TextStyle(fontSize: 20,fontWeight: FontWeight.w500,color: Colors.white),),),
 
               )
@@ -154,25 +155,35 @@ Widget horizontalLines({required TextEditingController controller,  bool islines
   return Column(
     children: [
       SizedBox(
+         height: 68,
          width: Get.width/8,
-        child: Expanded(
+        child: TextFormField(
+          keyboardType: TextInputType.number,
+          textAlign: TextAlign.center,
+          inputFormatters: [
+            LengthLimitingTextInputFormatter(1),
+            FilteringTextInputFormatter.digitsOnly,
+          ],
+          onChanged: (value){
+            if(value.length==1 && controller != _Controller6){
+              FocusScope.of(context).nextFocus();
+            }
+
+             setState(() {
+              islineshowing=!islineshowing;
+            });
+          },
           
-          child: TextField(
-            onTap: (){
-              setState(() {
-                islineshowing=!islineshowing;
-              });
-            },
-            mouseCursor: null ,
-            // maxLength: 1,
-            // maxLengthEnforcement: 1,
-            controller: controller,
-          decoration:  InputDecoration(
-            
-            border:!islineshowing? OutlineInputBorder():InputBorder.none
-          ),
-        ))),
-      Container( height: 2 , width: Get.width/8, color:ColorPalette.horizontalLineColor ,)
+          mouseCursor: null ,
+          // maxLength: 1,
+          // maxLengthEnforcement: 1,
+          controller: controller,
+        decoration:  InputDecoration(
+          
+          border: OutlineInputBorder()
+        ),
+        )),
+      // Container( height: 2 , width: Get.width/8, color:ColorPalette.horizontalLineColor ,)
     ],
   );
 }
