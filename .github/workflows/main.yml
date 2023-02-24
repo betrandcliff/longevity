@@ -44,6 +44,6 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Start release build
-        run: flutter build appbundle
+        run: flutter build apk --relase
         store_artifacts:
-          path: build/app/outputs/flutter-apk/app.apk
+          path: build/app/outputs/flutter-apk/app-release.apk
