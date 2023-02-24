@@ -16,8 +16,8 @@ jobs:
         
         - uses: subosito/flutter-action@v1
           with:
-            flutter-version: flutter-latest
-        
+            flutter-version: '1.7.8+hotfix.4'
+        - run : flutter upgrade
         - run: flutter pub get
         - run: flutter build apk --debug --split-per-abi
         # - name: Create a release APK
