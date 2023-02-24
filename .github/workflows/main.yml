@@ -39,9 +39,11 @@ jobs:
       - run: flutter channel dev
       - run: flutter doctor
       - run: flutter pub get
-      - run: flutter run test
+      - run: flutter test
 
 
       # Runs a set of commands using the runners shell
       - name: Start release build
         run: flutter build appbundle
+        store_artifacts:
+          path: build/app/outputs/flutter-apk/app.apk
