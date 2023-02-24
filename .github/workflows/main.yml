@@ -46,4 +46,4 @@ jobs:
       - name: Start release build
         run: flutter build apk --relase
         store_artifacts:
-          path: build/app/outputs/flutter-apk/app-release.apk
+          path: build/app/outputs/flutter-apk/app.apk
