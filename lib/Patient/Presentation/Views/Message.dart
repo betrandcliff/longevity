@@ -4,6 +4,7 @@ import 'package:country_pickers/country.dart';
 import 'package:country_pickers/country_pickers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+// import 'package:google_fonts/google_fonts.dart';
 import 'package:longevity/Patient/Presentation/Views/Contact.dart';
 // import 'package:google_fonts/google_fonts.dart';
 import 'package:longevity/common/Colors.dart';
@@ -81,7 +82,7 @@ or phone number""",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w400)),
                       child: Expanded(
                         child: TextField(
                           controller: _telephoneController,
-                          decoration:const InputDecoration(
+                          decoration: InputDecoration(
                             hintText: "+1123 456 789",
                             hintStyle: TextStyle(color: ColorPalette.inputHintColor,fontSize: 32),
                             border: InputBorder.none
@@ -98,7 +99,7 @@ or phone number""",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w400)),
                  padding: const EdgeInsets.only(left:18.0,top: 20,right: 18),
                 child: Row(
                   children:[
-                    const Text("Try",style: TextStyle(fontSize: 18,fontWeight: FontWeight.w500)),
+                     Text("Try",style: TextStyle(fontSize: 18,fontWeight: FontWeight.w500)),
                     TextButton(onPressed: (){}, child: Text("Demo Mode",style: TextStyle(fontSize: 18,fontWeight: FontWeight.w500),))
                   ],
                 ),
@@ -106,7 +107,7 @@ or phone number""",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w400)),
 
               Container(
                 // height: 48,
-                margin: EdgeInsets.only(top: Get.height/5),
+                margin: EdgeInsets.only(top: Get.height/6),
                 padding: const EdgeInsets.only(left:18.0,right: 18),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -127,7 +128,7 @@ or phone number""",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w400)),
                 ),
                 child: MaterialButton(onPressed: (){
                   Get.to( Contact());
-                },child: const Text("Continue",
+                },child:  Text("Continue",
                 style: TextStyle(fontSize: 20,fontWeight: FontWeight.w500,color: Colors.white),),),
 
               )

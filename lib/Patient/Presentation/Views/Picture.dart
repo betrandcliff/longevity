@@ -1,12 +1,20 @@
 
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:country_pickers/country.dart';
 import 'package:country_pickers/country_pickers.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:longevity/Patient/Presentation/Views/ChangeEmail.dart';
 import 'package:longevity/Patient/Presentation/Views/Earning.dart';
 import 'package:longevity/Patient/Presentation/Views/VerifyEmail.dart';
 import 'package:dashed_circle/dashed_circle.dart';
+
+// import 'package:file_picker_example/src/file_picker_demo.dart';
+
+// import 'package:image_picker/image_picker.dart';
 // import 'package:google_fonts/google_fonts.dart';
 import 'package:longevity/common/Colors.dart';
 
@@ -21,6 +29,8 @@ class Picture extends StatefulWidget {
 class _PictureState extends State<Picture> {
   
     final TextEditingController _controller = TextEditingController();
+  bool ispicked= false;
+   late File _image;
 
 double _value= 0;
   @override
@@ -57,13 +67,13 @@ double _value= 0;
                   Row(
                     children: [
                     Image.asset("assets/images/input-icon.png"),
-                    textButton(text: "Open Camera",fontSize: 16)
+                    textButton(text: "camera",fontSize: 16)
                     ],
                   ),
                   Row(
                     children: [
                     Image.asset("assets/images/upload_.png"),
-                    textButton(text: "Open gallery",fontSize: 16)
+                    textButton(text: "gallery",fontSize: 16)
                     ],
                   ),
                 ],
@@ -78,16 +88,14 @@ double _value= 0;
                   ],
                 ),
                    Container(
+                    height: Get.height/5,
+                    width: Get.width/3,
                     color: ColorPalette.greyButtonColor,
                     
                      child: DashedCircle(
                        child: Padding(
                          padding: EdgeInsets.all(8.0),
-                         child: CircleAvatar(
-                           radius: 70,
-                           backgroundColor: Colors.transparent,
-                          
-                           ),
+                         child: ispicked? Image.file(_image):Text("")
 
                        ),
                        color: ColorPalette.horizontalLineColor,
@@ -155,7 +163,7 @@ Widget textButton({
                 alignment: alignment,
                 child: Padding(
                   padding:  EdgeInsets.only(left:13.0,right: paddingright,top: paddingtop),
-                  child: TextButton(onPressed: (){}, child:  Text(text,style:TextStyle(fontSize: fontSize,fontWeight: FontWeight.w400,decoration:decoration,color: color))),
+                  child: TextButton(onPressed: ()=>pickImage(), child:  Text("Open $text",style:TextStyle(fontSize: fontSize,fontWeight: FontWeight.w400,decoration:decoration,color: color))),
                 ),
               );
 }
@@ -170,5 +178,32 @@ Widget textButton({
               ));
   } 
 
+
+pickImage() async{
+  // final ImagePicker imagepicker = ImagePicker();
+
+  // final file =await imagepicker.pickImage(source:text=="camera"?ImageSource.camera: ImageSource.gallery);
+
+  // if(file==null)return;
+
+  // final imagetmp = File(file.path);
+
+  // setState(() {
+  //   this._image= imagetmp;
+  // });
+
+
+  FilePickerResult? result = await FilePicker.platform.pickFiles();
+
+    if (result != null) {
+
+      setState(() {
+         _image = File(result.files.single.path!);
+         ispicked= true;
+      });
+    } else {
+      // User canceled the picker
+    }
+}
 
 }

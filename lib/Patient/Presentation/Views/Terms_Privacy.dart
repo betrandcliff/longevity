@@ -5,6 +5,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:longevity/Patient/Presentation/Views/ChangeEmail.dart';
+import 'package:longevity/Patient/Presentation/Views/SelectLanguage.dart';
 import 'package:longevity/Patient/Presentation/Views/VerifyEmail.dart';
 // import 'package:google_fonts/google_fonts.dart';
 import 'package:longevity/common/Colors.dart';
@@ -169,7 +170,9 @@ _handletextTap(){
                           color: ColorPalette.buttonColor,
                         ),
                         child: MaterialButton(
-                          onPressed: (){},child: const Text("Close",
+                          onPressed: (){
+                            Get.to(()=>SelectLanguage());
+                          },child: const Text("Close",
                         style: TextStyle(fontSize: 20,fontWeight: FontWeight.w500,color: Colors.white),),),
           
                       ),

@@ -3,6 +3,7 @@ import 'package:country_pickers/country.dart';
 import 'package:country_pickers/country_pickers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+// import 'package:google_fonts/google_fonts.dart';
 import 'package:longevity/Patient/Presentation/Views/ChangeEmail.dart';
 // import 'package:google_fonts/google_fonts.dart';
 import 'package:longevity/common/Colors.dart';
@@ -35,7 +36,7 @@ class _ContactState extends State<Contact> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(onPressed: (){Get.back();}, icon: Icon(Icons.arrow_back_ios_outlined)),
-                dropdownFunction(),
+                countrydropdown(),
                 ],
               ),
             ),
@@ -81,7 +82,7 @@ or phone number""",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w400)),
                       child: Expanded(
                         child: TextField(
                           // controller: _telephoneController,
-                          decoration:const InputDecoration(
+                          decoration: InputDecoration(
                             hintText: "Email or phone",
                             hintStyle: TextStyle(color: ColorPalette.inputHintColor,fontSize: 32),
                             border: InputBorder.none
@@ -99,7 +100,7 @@ or phone number""",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w400)),
                 child: Row(
                   children:[
                     const Text("Try",style: TextStyle(fontSize: 18,fontWeight: FontWeight.w500)),
-                    TextButton(onPressed: (){}, child: Text("Demo Mode",style: TextStyle(fontSize: 18,fontWeight: FontWeight.w500),))
+                    TextButton(onPressed: (){}, child: Text("Demo Mode",style:TextStyle(fontSize: 18,fontWeight: FontWeight.w500),))
                   ],
                 ),
               ),
@@ -143,7 +144,7 @@ Widget socialMedia(String name){
   );
 }
 
-  dropdownFunction(){
+  countrydropdown(){
     return Container(
       margin: EdgeInsets.only(right: 20),
       child: CountryPickerDropdown(

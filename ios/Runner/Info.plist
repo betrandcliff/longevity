@@ -46,6 +46,18 @@
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<key>com.apple.security.network.client</key>
 	<true/>
+
+	<!-- <key>NSPhotoLibraryUsageDescription </key>
+	<string>choose photo from gallery</string>
+	
+
+	<key>NSCameraUsageDescription</key>
+	<string>Take photo from camara</string> -->
+	
+	<!-- <NSMicrophoneUsageDescription>
+	
+	</NSMicrophoneUsageDescription> -->
 </dict>
 </plist>
