@@ -50,14 +50,14 @@ class _VerifyEmailState extends State<VerifyEmail> {
             Align(
               alignment: Alignment.topLeft,
               child: Padding(
-              padding: const EdgeInsets.only(left:18.0,bottom: 10,top: 10),
+              padding:  EdgeInsets.only(left:18.0,bottom: 10,top: Get.height/80),
                 child: Image.asset("assets/images/message.png", height: 38.28, width: 35.47,),
               )),
 
-           const Align(
+            Align(
               alignment: Alignment.topLeft,
               child: Padding(
-                padding: const EdgeInsets.only(left:18.0,top: 10),
+                padding:  EdgeInsets.only(left:18.0,top: Get.height/100),
                 child: Text("Hello there",style: TextStyle(color: ColorPalette.textColor, fontSize: 32),),
               )),
 
@@ -65,7 +65,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
               Align(
                alignment: Alignment.topLeft, 
                 child: Padding(
-                padding: const EdgeInsets.only(left:18.0,top: 10),
+                padding:  EdgeInsets.only(left:18.0,top: Get.height/80),
                   child: Row(
                     children: [
                      const Text("Let me",style: TextStyle(fontSize: 32,color: ColorPalette.textBlackColor,fontWeight: FontWeight.w400)),
@@ -83,10 +83,10 @@ class _VerifyEmailState extends State<VerifyEmail> {
                 ),
               ),
 
-            const  Align(
+              Align(
                 alignment: Alignment.topLeft,
                 child: Padding(
-                  padding: const EdgeInsets.only(left:18.0,top: 12),
+                  padding:  EdgeInsets.only(left:18.0,top: Get.height/60),
                   child: Text("""we have sent you a message with 6-digit code,
 or use the code from your Authenticator App.""",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w400)),
                 ),
@@ -110,7 +110,7 @@ or use the code from your Authenticator App.""",style: TextStyle(fontSize: 16,fo
              
 
               Padding(
-                 padding: const EdgeInsets.only(left:18.0,top: 6,right: 18),
+                 padding:  EdgeInsets.only(left:18.0,top: Get.height/50,right: 18),
                 child: Row(
                   children:[
                     IconButton(onPressed: (){}, icon:const Icon(Icons.call_outlined,color: ColorPalette.textColor,)),

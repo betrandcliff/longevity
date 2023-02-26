@@ -81,6 +81,7 @@ or phone number""",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w400)),
                     Container(
                       child: Expanded(
                         child: TextField(
+                          keyboardType: TextInputType.phone,
                           controller: _telephoneController,
                           decoration: InputDecoration(
                             hintText: "+1123 456 789",

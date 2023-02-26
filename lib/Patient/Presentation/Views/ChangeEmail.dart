@@ -20,6 +20,9 @@ class _ChangeEmailState extends State<ChangeEmail> {
   final TextEditingController _passwordController = TextEditingController();
 String Security_Status ="";
 int linecolor=-1;
+bool _ishash= true;
+RegExp numReg = RegExp(r".*[0-9].*");
+// RegExp letterReg = RegExp(r"?=.*[*".!@#\$%^&(){}:;<>,.\' + r"'?/~_+-=])");
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -78,20 +81,23 @@ int linecolor=-1;
                 margin: EdgeInsets.only(top: Get.height/14),
                 padding: const EdgeInsets.only(left:18.0,top: 30,right: 18),
                 child: TextField(
-                  controller: _passwordController,
-                  decoration: InputDecoration(
-                    hintText: "**************",
-                    hintStyle:const TextStyle(color: ColorPalette.inputHintColor,fontSize: 32),
-                    border: InputBorder.none,
-                    suffixIcon: IconButton(onPressed: (){}, icon: Icon(Icons.remove_red_eye_outlined)),
-                    suffixIconColor: ColorPalette.textColor,
-                    suffixIconConstraints:BoxConstraints(maxWidth: 53),
-
-                    // isDense: true
-                  ),
-                  onChanged: security
-                  
-                ),
+                           controller: _passwordController,
+                           obscureText: _ishash,
+                           keyboardType: TextInputType.text,
+                          
+                          decoration: InputDecoration(
+                            hintText: "**************",
+                            hintStyle: TextStyle(color: ColorPalette.inputHintColor,fontSize: 32),
+                            border: InputBorder.none,
+                             suffixIcon: IconButton(onPressed: (){setState(() {
+                             _ishash=!_ishash;
+                           });}, icon: Icon(Icons.remove_red_eye_outlined)),
+                   
+                          ),
+                          onChanged: security
+                          
+                        ),
+               
               ),
 
               Row(
@@ -147,18 +153,21 @@ Widget horizontalLines({ required Color color}){
 }
  
  security( String inputText){
-  if(inputText.length>=5 && inputText.length<=8)
+  String password = inputText.trim();
+  print(password);
+  print(!numReg.hasMatch(password));
+  if(password.length<6)
+    changeSecurityStatus("very Weak",0);
+  
+  else if(password.length<9)
     changeSecurityStatus("Weak",1);
   
-  else if(inputText.length>9)
+
+  else if(!numReg.hasMatch(password)  || !password.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]')))
     changeSecurityStatus("Strong",2);
   
-
-  else if(RegExp(r'(?=.*\d)(?=.*\#)').hasMatch(inputText))
-    changeSecurityStatus("VeryStrong",3);
-  
   else
-     changeSecurityStatus("VeryWeak",0);
+     changeSecurityStatus("Very Strong",3);
 
   
   
@@ -170,6 +179,7 @@ changeSecurityStatus(String value,  int line){
         Security_Status= value;
         linecolor=line;
         print(value);
+       
       });
 }
 }

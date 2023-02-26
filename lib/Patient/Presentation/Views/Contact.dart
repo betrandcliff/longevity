@@ -23,117 +23,118 @@ class _ContactState extends State<Contact> {
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        body: Center(
-        child: Container(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
+        body: Container(
 
-            Container(
-              width: double.infinity,
-              // margin: EdgeInsets.only(top: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconButton(onPressed: (){Get.back();}, icon: Icon(Icons.arrow_back_ios_outlined)),
-                countrydropdown(),
-                ],
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+          
+              Container(
+                width: double.infinity,
+                // margin: EdgeInsets.only(top: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    IconButton(onPressed: (){Get.back();}, icon: Icon(Icons.arrow_back_ios_outlined)),
+                  countrydropdown(),
+                  ],
+                ),
               ),
-            ),
-
-            Align(
-              alignment: Alignment.topLeft,
-              child: Padding(
-              padding: const EdgeInsets.only(left:18.0,bottom: 10,top: 10),
-                child: Image.asset("assets/images/hand.png"),
-              )),
-
-            Align(
-              alignment: Alignment.topLeft,
-              child: Padding(
-                padding: const EdgeInsets.only(left:18.0,top: 10),
-                child: Text("Hello there",style: TextStyle(color: ColorPalette.textColor, fontSize: 32),),
-              )),
-
-
+          
               Align(
-               alignment: Alignment.topLeft, 
+                alignment: Alignment.topLeft,
                 child: Padding(
-                padding: const EdgeInsets.only(left:18.0,top: 10),
-                  child: Text("Lets get in contact",style: TextStyle(fontSize: 32,color: ColorPalette.textBlackColor,fontWeight: FontWeight.w400)),
+                padding: const EdgeInsets.only(left:18.0,bottom: 10,top: 10),
+                  child: Image.asset("assets/images/hand.png"),
                 )),
-
+          
               Align(
                 alignment: Alignment.topLeft,
                 child: Padding(
                   padding: const EdgeInsets.only(left:18.0,top: 10),
-                  child: Text("""Login or create your account using your email
-or phone number""",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w400)),
+                  child: Text("Hello there",style: TextStyle(color: ColorPalette.textColor, fontSize: 32),),
+                )),
+          
+          
+                Align(
+                 alignment: Alignment.topLeft, 
+                  child: Padding(
+                  padding: const EdgeInsets.only(left:18.0,top: 10),
+                    child: Text("Lets get in contact",style: TextStyle(fontSize: 32,color: ColorPalette.textBlackColor,fontWeight: FontWeight.w400)),
+                  )),
+          
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left:18.0,top: 10),
+                    child: Text("""Login or create your account using your email
+          or phone number""",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w400)),
+                  ),
                 ),
-              ),
-
-
-              Padding(
-                 padding: const EdgeInsets.only(left:18.0,top: 30,right: 18),
-                child: Row(
-                  children: [
-                 
-                    Container(
-                      child: Expanded(
-                        child: TextField(
-                          // controller: _telephoneController,
-                          decoration: InputDecoration(
-                            hintText: "Email or phone",
-                            hintStyle: TextStyle(color: ColorPalette.inputHintColor,fontSize: 32),
-                            border: InputBorder.none
+          
+          
+                Padding(
+                   padding: const EdgeInsets.only(left:18.0,top: 30,right: 18),
+                  child: Row(
+                    children: [
+                   
+                      Container(
+                        child: Expanded(
+                          child: TextField(
+                            // controller: _telephoneController,
+                            decoration: InputDecoration(
+                              hintText: "Email or phone",
+                              hintStyle: TextStyle(color: ColorPalette.inputHintColor,fontSize: 32),
+                              border: InputBorder.none
+                            ),
+                            
                           ),
-                          
                         ),
-                      ),
-                    )
-                  ],
+                      )
+                    ],
+                  ),
                 ),
-              ),
-
-              Padding(
-                 padding: const EdgeInsets.only(left:18.0,top: 20,right: 18),
-                child: Row(
-                  children:[
-                    const Text("Try",style: TextStyle(fontSize: 18,fontWeight: FontWeight.w500)),
-                    TextButton(onPressed: (){}, child: Text("Demo Mode",style:TextStyle(fontSize: 18,fontWeight: FontWeight.w500),))
-                  ],
+          
+                Padding(
+                   padding: const EdgeInsets.only(left:18.0,top:20,right: 18),
+                  child: Row(
+                    children:[
+                      const Text("Try",style: TextStyle(fontSize: 18,fontWeight: FontWeight.w500)),
+                      TextButton(onPressed: (){}, child: Text("Demo Mode",style:TextStyle(fontSize: 18,fontWeight: FontWeight.w500),))
+                    ],
+                  ),
                 ),
-              ),
-
-              Container(
-                // height: 48,
-                margin: EdgeInsets.only(top: Get.height/5),
-                padding: const EdgeInsets.only(left:18.0,right: 18),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    socialMedia("facebook"),
-                    socialMedia("google"),
-                    socialMedia("mac"),
-                  ],
+          
+                Container(
+                  // height: 48,
+                  margin: EdgeInsets.only(top: Get.height/5),
+                  padding: const EdgeInsets.only(left:18.0,right: 18),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      socialMedia("facebook"),
+                      socialMedia("google"),
+                      socialMedia("mac"),
+                    ],
+                  ),
                 ),
-              ),
-
-              Container(
-                width: double.infinity,
-                margin: const EdgeInsets.only(left: 20,right: 20,top: 25),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: ColorPalette.buttonColor,
-                ),
-                child: MaterialButton(onPressed: ()=>Get.to(()=>const ChangeEmail()),child: const Text("Continue",
-                style: TextStyle(fontSize: 20,fontWeight: FontWeight.w500,color: Colors.white),),),
-
-              )
-              
-          ]),
-        ),
-      )),
+          
+                Container(
+                  width: double.infinity,
+                  margin:  EdgeInsets.only(left: 20,right: 20,top: Get.height/20),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: ColorPalette.buttonColor,
+                  ),
+                  child: MaterialButton(onPressed: ()=>Get.to(()=>const ChangeEmail()),child: const Text("Continue",
+                  style: TextStyle(fontSize: 20,fontWeight: FontWeight.w500,color: Colors.white),),),
+          
+                )
+                
+            ]),
+          ),
+        )),
     );
   }
 

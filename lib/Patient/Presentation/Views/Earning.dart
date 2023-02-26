@@ -41,7 +41,7 @@ class _EarnState extends State<Earn> {
 
             
             Padding(
-              padding: const EdgeInsets.only(top:18.0,bottom: 10),
+              padding:  EdgeInsets.only(top:Get.height/60,bottom: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                
@@ -61,18 +61,18 @@ class _EarnState extends State<Earn> {
            ),
           
              
-          const Padding(
-             padding: const EdgeInsets.only(top:28.0),
+           Padding(
+             padding:  EdgeInsets.only(top:Get.height/30),
              child: Text("Play our game and parameters and devices, invite friends and get achievements to get rewarded in LongevityCoin(\$LONG token)",style: TextStyle(fontSize: 18,fontWeight: FontWeight.w400),),
            ),
 
-         const  Padding(
-             padding: const EdgeInsets.only(top:28.0),
+         Padding(
+             padding: EdgeInsets.only(top:Get.height/30),
              child: Text("You can use the token to get products and services in Longevity EcoSystem",style: TextStyle(fontSize: 18,fontWeight: FontWeight.w400),),
            ),
 
            Padding(
-            padding: const EdgeInsets.only(top:28.0),
+            padding:  EdgeInsets.only(top:Get.height/30),
              child: RichText(text: TextSpan(
                   children: [
                   const TextSpan(
@@ -90,7 +90,7 @@ class _EarnState extends State<Earn> {
              
               
               Padding(
-                 padding: const EdgeInsets.only(top:28.0),
+                 padding:  EdgeInsets.only(top:Get.height/20),
                 child: Row(
                   children: [
                     textButton(text: "Learn more about \$LONG",fontSize: 18),
@@ -100,16 +100,16 @@ class _EarnState extends State<Earn> {
                 ),
               ),
               
-              Container(
-                width: double.infinity,
-                margin:  EdgeInsets.only(top: Get.height/6),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(25),
-                  color: ColorPalette.buttonColor,
-                ),
-                child: MouseRegion(
-                 onEnter: (event) => onEnter(true),
-                 onExit: (event) => onEnter(false),
+              MouseRegion(
+                onEnter: (event) => onEnter(true),
+                onExit: (event) => onEnter(false),
+                child: Container(
+                  width: ishovered? Get.width/2: double.infinity,
+                  margin:  EdgeInsets.only(top: Get.height/8),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25),
+                    color: ColorPalette.buttonColor,
+                  ),
                   child: AnimatedContainer(
                     duration: const Duration(milliseconds:200),
                     
@@ -117,12 +117,11 @@ class _EarnState extends State<Earn> {
                       
                      
                       onPressed: (){
-                          Get.to(()=>DemoMode());
+                          Get.back();
                     },child: const Text("Close",
                     style: TextStyle(fontSize: 20,fontWeight: FontWeight.w500,color: Colors.white),),),
                   ),
                 ),
-
               ),
 
              

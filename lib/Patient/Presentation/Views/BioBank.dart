@@ -47,14 +47,14 @@ class _BioBankState extends State<BioBank> {
             Align(
               alignment: Alignment.topLeft,
               child: Padding(
-              padding: const EdgeInsets.only(left:18.0,bottom: 10,top: 10),
+              padding:  EdgeInsets.only(left:18.0,bottom: 10,top: Get.height/80),
                 child: Image.asset("assets/images/logo.png",height: 47.06, width: 96,),
               )),
 
-           const Align(
+            Align(
               alignment: Alignment.topLeft,
               child: Padding(
-                padding: const EdgeInsets.only(left:18.0,top: 10),
+                padding:  EdgeInsets.only(left:18.0,top: Get.height/80),
                 child: Text("Let's get started",style: TextStyle(color: ColorPalette.textBlackColor, fontSize: 36),),
               )),
 
@@ -85,10 +85,10 @@ class _BioBankState extends State<BioBank> {
 
             
 
-           const Align(
+           Align(
                 alignment: Alignment.topLeft,
                 child: Padding(
-                  padding: const EdgeInsets.only(left:20.0,top: 20),
+                  padding:  EdgeInsets.only(left:20.0,top: Get.height/40),
                   child: Text("By using our app and creating an account you",style: TextStyle(fontSize: 14,fontWeight: FontWeight.w400)),
                 ),
               ),
@@ -96,7 +96,7 @@ class _BioBankState extends State<BioBank> {
                Padding(
                  padding: const EdgeInsets.only(left:18.0,),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     const Text("agree with our ",style: TextStyle(fontSize: 14,fontWeight: FontWeight.w400)),
                     TextButton(onPressed: (){},child:const Text("Terms of Service",style: TextStyle(fontSize: 14,fontWeight: FontWeight.w400))),
@@ -134,7 +134,7 @@ class _BioBankState extends State<BioBank> {
        
               Container(
                 width: double.infinity,
-                margin: const EdgeInsets.only(left: 20,right: 20,top: 30),
+                margin:  EdgeInsets.only(left: 20,right: 20,top: Get.height/25),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(25),
                   color: ColorPalette.buttonColor,

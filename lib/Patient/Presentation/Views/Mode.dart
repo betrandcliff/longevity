@@ -45,7 +45,7 @@ _handletextTap(){
         body: Center(
           
         child: Container(
-          margin: EdgeInsets.all(14),
+          margin: EdgeInsets.all(Get.height/50),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -55,7 +55,7 @@ _handletextTap(){
             //   alignment: Alignment.centerLeft,
             //   child: IconButton(onPressed: (){Get.back();}, icon:const Icon(Icons.arrow_back_ios_outlined))),
             Padding(
-              padding: const EdgeInsets.only(top:18.0),
+              padding:  EdgeInsets.only(top:Get.height/50),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                
@@ -79,18 +79,18 @@ _handletextTap(){
           
           
              
-          const Padding(
-             padding: const EdgeInsets.only(top:19.0),
+           Padding(
+             padding:  EdgeInsets.only(top:Get.height/50),
              child: Text("""In demo mode you can try prediction features without createing and account 
 or inputing data""",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w400),),
            ),
-         const  Padding(
-             padding: EdgeInsets.only(top:19.0),
+          Padding(
+             padding: EdgeInsets.only(top:Get.height/50),
              child: Text("""Using a random preset of full parameters, we will make real timeand give recommendations
 """,style: TextStyle(fontSize: 20,fontWeight: FontWeight.w400),),
            ),
-         const  Padding(
-             padding: EdgeInsets.only(top:9.0),
+           Padding(
+             padding: EdgeInsets.only(top:Get.height/50),
              child: Text("""Demo mode is not intended for personal use or give recommedation for your parameters. All data
 provided here has not relation with users, any similarity with personal information is mere coincidence.
 """,style: TextStyle(fontSize: 20,fontWeight: FontWeight.w400,fontStyle: FontStyle.italic,color: ColorPalette.textgreyColor),),

@@ -17,7 +17,7 @@ class ChangeUserName extends StatefulWidget {
 }
 
 class _ChangerUserNameState extends State<ChangeUserName> {
-  final TextEditingController _telephoneController = TextEditingController();
+  final TextEditingController _Controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -80,28 +80,29 @@ class _ChangerUserNameState extends State<ChangeUserName> {
 
               Padding(
                  padding: const EdgeInsets.only(left:18.0,top: 30,right: 18),
-                child: Row(
-                  children: [
-                 
-                    Container(
-                      child: Expanded(
-                        child: TextField(
-                          // controller: _telephoneController,
-                          decoration:const InputDecoration(
-                            hintText: "Jane Cooper",
-                            hintStyle: TextStyle(color: ColorPalette.inputHintColor,fontSize: 32),
-                            border: InputBorder.none
-                          ),
-                          
-                        ),
-                      ),
-                    )
-                  ],
+                child: Expanded(
+                  child: TextField(
+                    
+                    controller: _Controller,
+                    decoration:const InputDecoration(
+                      hintText: "Jane Cooper",
+                      hintStyle: TextStyle(color: ColorPalette.inputHintColor,fontSize: 32),
+                      border: InputBorder.none
+                    ),
+                    
+                  ),
                 ),
+              ),  
+              
+              Container(
+                margin: EdgeInsets.only(left: 15,right: 15),
+                width: double.infinity,
+                height: 5,
+                color: ColorPalette.greyButtonColor,
               ),
 
               Padding(
-                 padding: const EdgeInsets.only(left:18.0,top: 20,right: 18),
+                 padding:  EdgeInsets.only(left:18.0,top:Get.height/45,right: 18),
                 child: Row(
                   children:[
                     const Text("Add",style: TextStyle(fontSize: 18,fontWeight: FontWeight.w500)),

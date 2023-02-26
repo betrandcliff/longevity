@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 // import 'package:google_fonts/google_fonts.dart';
 import 'package:longevity/Patient/Presentation/Views/Message.dart';
+import 'Patient/Presentation/Views/Contact.dart';
 import 'common/Colors.dart';
 // import 'package:google_fonts/google_fonts.dart';
 void main() {
@@ -47,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Future.delayed(Duration(seconds: 5),()=>Get.to(()=>Message()));
+    Future.delayed(Duration(seconds: 5),()=>Get.to(()=>Contact()));
   }
 
   @override

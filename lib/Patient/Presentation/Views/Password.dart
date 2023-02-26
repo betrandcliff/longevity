@@ -20,7 +20,7 @@ class Password extends StatefulWidget {
 class _PasswordState extends State<Password> {
   
     final TextEditingController _controller = TextEditingController();
-
+     bool _ishash=true;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -41,7 +41,7 @@ class _PasswordState extends State<Password> {
             Align(
               alignment: Alignment.topLeft,
               child: Padding(
-              padding: const EdgeInsets.only(left:18.0,bottom: 40,top: 30),
+              padding:  EdgeInsets.only(left:18.0,bottom: 40,top: Get.height/20),
                 child: Image.asset("assets/images/Vector_.png"),
               )),
 
@@ -60,15 +60,19 @@ class _PasswordState extends State<Password> {
                     padding: const EdgeInsets.only(left:18.0,right: 18.0),
                 margin: EdgeInsets.only(top: Get.height/20),
                 child: TextField(
+                  obscureText: _ishash,
                   controller:_controller ,
+                  // keyboardType: TextInputType.phone,
                   decoration: InputDecoration(
                     hintText: "**************",
                     hintStyle: TextStyle(fontSize: 16),
-                    suffixIcon: IconButton(icon: Icon(Icons.visibility_outlined),onPressed: (){},)
+                    suffixIcon: IconButton(icon: Icon(Icons.visibility_outlined),onPressed: (){setState(() {
+                      _ishash=!_ishash;
+                    });},)
                   ),),
               ),
           
-            textButton(text: "Forget Password", alignment: Alignment.centerRight,fontSize: 14,paddingright: 13,paddingtop: 20),
+            textButton(text: "Forget Password", alignment: Alignment.centerRight,fontSize: 14,paddingright: 13,paddingtop: Get.height/40),
 
 
              
@@ -159,7 +163,7 @@ Widget textButton({ required String text,Alignment alignment=Alignment.topLeft,d
 
                     Container(
                       width: double.infinity,
-                      margin: EdgeInsets.only(top: 15,bottom: 5),
+                      margin: EdgeInsets.only(top: Get.height/80,bottom: 5),
                       decoration:const BoxDecoration(
                         // borderRadius: BorderRadius.circular(15),
                         color:ColorPalette.greyButtonColor ,

@@ -6,6 +6,8 @@
 
  I have just linked all the pages together so that the output can be seen. but when the whole system is implemented, that is when this app will look like what is on the figma design.
 
+ I buttom sheets 
+
 
 PROBLEMS:
 
