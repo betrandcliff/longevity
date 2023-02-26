@@ -113,9 +113,10 @@ class _FavouriteAppsState extends State<FavouriteApps> {
         ),
       ),
       bottomNavigationBar: BottomAppBar(
+       
         child:   Container(
-                width: double.infinity,
-                margin: const EdgeInsets.only(left: 20,right: 20,bottom: 20),
+              
+                margin: const EdgeInsets.only(left: 90,right: 90,bottom: 20),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(25),
                   color: ColorPalette.buttonColor,
@@ -144,28 +145,67 @@ cardItems({ String img="" , required String text,IconData? icon, required  int i
        child: Card(
         color:active==index?ColorPalette.greyButtonColor:null ,
         elevation: 4,
-         child: Row(
-          
-           children: [
-            Container(
-              margin: EdgeInsets.only(left: 5),
-              height: 40,
-              width: 5,
-              color:active==index? Colors.blue[200]:null,
-            ),
-            Expanded(
-              child: Column(
-                children: [
-                  ListTile(
-                   leading:img.isNotEmpty? Image.asset("assets/images/$img.png"):null,
-                   title: Text(text,style: TextStyle(fontSize: 24,fontWeight: FontWeight.w400),),
-                   trailing: Icon(icon),
-                  ),
-                ],
+         child: Padding(
+           padding: const EdgeInsets.all(8.0),
+           child: Row(
+            
+             children: [
+              Container(
+                margin: EdgeInsets.only(left: 5),
+                height: 40,
+                width: 5,
+                color:active==index? Colors.blue[200]:null,
               ),
-            ),
-             
-           ],
+              Expanded(
+                child: Column(
+                  children: [
+                    ListTile(
+                     leading:img.isNotEmpty? Image.asset("assets/images/$img.png"):null,
+                     title: Text(text,style: TextStyle(fontSize: 24,fontWeight: FontWeight.w400),),
+                     trailing: Icon(icon),
+                    ),
+                      if(img=="Apple-Health")
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom:8.0),
+                            child: Icon(Icons.check_circle_outline,color: Colors.green,size: 12,),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left:8.0,bottom: 8),
+                            child: Text("Connected", style: TextStyle(color: Colors.green),),
+                          ),
+                        ],
+                      ),
+
+
+                       if(img=="")
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left:8.0,bottom: 8),
+                            child: Text("Your app is missing?", style: TextStyle(),),
+                          ),
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left:8.0,bottom: 8),
+                                child: Text("Check support app", style: TextStyle(color: ColorPalette.buttonColor),),
+                              ),
+                              Icon(Icons.call_made,color: ColorPalette.buttonColor,size: 10,)
+                            ],
+                          ),
+                        ],
+                      )
+                  
+                  ],
+                ),
+              ),
+               
+             ],
+           ),
          ),
        ),
      ),

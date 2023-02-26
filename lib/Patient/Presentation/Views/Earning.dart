@@ -110,17 +110,13 @@ class _EarnState extends State<Earn> {
                     borderRadius: BorderRadius.circular(25),
                     color: ColorPalette.buttonColor,
                   ),
-                  child: AnimatedContainer(
-                    duration: const Duration(milliseconds:200),
+                  child: MaterialButton(
                     
-                    child: MaterialButton(
-                      
-                     
-                      onPressed: (){
-                          Get.back();
-                    },child: const Text("Close",
-                    style: TextStyle(fontSize: 20,fontWeight: FontWeight.w500,color: Colors.white),),),
-                  ),
+                   
+                    onPressed: (){
+                        Get.back();
+                  },child: const Text("Close",
+                  style: TextStyle(fontSize: 20,fontWeight: FontWeight.w500,color: Colors.white),),),
                 ),
               ),
 

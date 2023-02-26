@@ -22,6 +22,10 @@ class _BioBankState extends State<BioBank> {
   
   @override
   Widget build(BuildContext context) {
+    
+    // final hoveredTransform = Matrix4.identity()..scale(0,-8,0);
+    // final transform = hoveredTransform;
+
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
@@ -51,21 +55,22 @@ class _BioBankState extends State<BioBank> {
                 child: Image.asset("assets/images/logo.png",height: 47.06, width: 96,),
               )),
 
-            Align(
-              alignment: Alignment.topLeft,
-              child: Padding(
-                padding:  EdgeInsets.only(left:18.0,top: Get.height/80),
-                child: Text("Let's get started",style: TextStyle(color: ColorPalette.textBlackColor, fontSize: 36),),
-              )),
-
-
-             const Align(
+            Column(
+              children: [
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Padding(
+                    padding:  EdgeInsets.only(left:18.0,top: Get.height/80),
+                    child: Text("Let's get started",style: TextStyle(color: ColorPalette.textBlackColor, fontSize: 36),),
+                  )),
+            
+               const Align(
                alignment: Alignment.topLeft, 
                 child: Padding(
                 padding: const EdgeInsets.only(left:18.0),
                   child: Text("With your",style: TextStyle(fontSize: 36,color: ColorPalette.textBlackColor,fontWeight: FontWeight.w400)),
                 )),
-
+            
               Align(
                 alignment: Alignment.topLeft,
                 child: Padding(
@@ -73,7 +78,13 @@ class _BioBankState extends State<BioBank> {
                   child: TextButton(onPressed: (){}, child: const Text("Digital  BioBank",style: TextStyle(fontSize: 36,fontWeight: FontWeight.w400))),
                 ),
               ),
+            
+            
+              ],
+            ),
 
+
+            
 
               
           
@@ -134,7 +145,7 @@ class _BioBankState extends State<BioBank> {
        
               Container(
                 width: double.infinity,
-                margin:  EdgeInsets.only(left: 20,right: 20,top: Get.height/25),
+                margin:  EdgeInsets.only(left: 20,right: 20,top: Get.height/23),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(25),
                   color: ColorPalette.buttonColor,

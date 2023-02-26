@@ -134,7 +134,7 @@ or use the code from your Authenticator App.""",style: TextStyle(fontSize: 16,fo
              const Text("Be quick, code expires in 6 hours!",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w400)),
               Container(
                 width: double.infinity,
-                margin:  EdgeInsets.only(left: 20,right: 20,top: Get.height/16),
+                margin:  EdgeInsets.only(left: 20,right: 20,top: Get.height/18),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(25),
                   color: ColorPalette.buttonColor,

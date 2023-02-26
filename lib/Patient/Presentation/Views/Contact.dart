@@ -122,7 +122,7 @@ class _ContactState extends State<Contact> {
           
                 Container(
                   width: double.infinity,
-                  margin:  EdgeInsets.only(left: 20,right: 20,top: Get.height/20),
+                  margin:  EdgeInsets.only(left: 20,right: 20,top: Get.height/25),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: ColorPalette.buttonColor,

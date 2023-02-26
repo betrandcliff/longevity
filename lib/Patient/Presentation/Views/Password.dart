@@ -79,7 +79,7 @@ class _PasswordState extends State<Password> {
               
               Container(
                 width: double.infinity,
-                margin:  EdgeInsets.only(left: 20,right: 20,top: Get.height/3.1),
+                margin:  EdgeInsets.only(left: 20,right: 20,top: Get.height/3.2),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(25),
                   color: ColorPalette.buttonColor,
